@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.recycleviewberita.DetailBeritaActivity;
 import com.example.recycleviewberita.R;
-import com.example.recycleviewberita.model.BeritaModel;
 
 import java.util.List;
 
@@ -51,7 +50,10 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.BeritaView
             holder.txtBullet.setTextColor(ColorStateList.valueOf(Color.RED));
         }else if (listBerita.get(position).getKategori().equalsIgnoreCase("travel")){
             holder.txtBullet.setTextColor(ColorStateList.valueOf(Color.GREEN));
+        }else if (listBerita.get(position).getKategori().equalsIgnoreCase("deskripsi")){
+            holder.txtBullet.setTextColor(ColorStateList.valueOf(Color.YELLOW));
         }
+
 
         holder.cardButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +75,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.BeritaView
     public class BeritaViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageBerita;
-        TextView txtJudul,txtBullet,txtKategori;
+        TextView txtJudul,txtBullet,txtKategori,txtDeskripsi;
         CardView cardButton;
 
         public BeritaViewHolder(@NonNull View itemView) {
@@ -83,6 +85,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.BeritaView
             txtJudul = itemView.findViewById(R.id.txtJudul);
             txtBullet = itemView.findViewById(R.id.txtBullet);
             txtKategori = itemView.findViewById(R.id.txtKategori);
+            txtDeskripsi = itemView.findViewById(R.id.txtDeskripsi);
         }
     }
 }

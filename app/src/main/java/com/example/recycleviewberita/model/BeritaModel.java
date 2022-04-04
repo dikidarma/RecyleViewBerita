@@ -1,46 +1,21 @@
 package com.example.recycleviewberita.model;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BeritaModel implements Parcelable {
+    
     private String judul;
     private String kategori;
     private String images;
-
-    public BeritaModel() {
-    }
-
-    public BeritaModel(String judul, String kategori, String images) {
-        this.judul = judul;
-        this.kategori = kategori;
-        this.images = images;
-    }
-
-    public String getJudul() {
-        return judul;
-    }
-
-    public void setJudul(String judul) {
-        this.judul = judul;
-    }
-
-    public String getKategori() {
-        return kategori;
-    }
-
-    public void setKategori(String kategori) {
-        this.kategori = kategori;
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
+    private String deskripsi;
 
 
     @Override
@@ -53,21 +28,24 @@ public class BeritaModel implements Parcelable {
         dest.writeString(this.judul);
         dest.writeString(this.kategori);
         dest.writeString(this.images);
+        dest.writeString(this.deskripsi);
     }
 
     public void readFromParcel(Parcel source) {
         this.judul = source.readString();
         this.kategori = source.readString();
         this.images = source.readString();
+        this.deskripsi = source.readString();
     }
 
     protected BeritaModel(Parcel in) {
         this.judul = in.readString();
         this.kategori = in.readString();
         this.images = in.readString();
+        this.deskripsi = in.readString();
     }
 
-    public static final Parcelable.Creator<BeritaModel> CREATOR = new Parcelable.Creator<BeritaModel>() {
+    public static final Creator<BeritaModel> CREATOR = new Creator<BeritaModel>() {
         @Override
         public BeritaModel createFromParcel(Parcel source) {
             return new BeritaModel(source);
